@@ -8,6 +8,7 @@ public class Main {
 
     public static void main(String[] args) {
         testCaseOne();
+
     }
 
     public static HashSet generatePossibleWords(String knownLetters, char[][] yellowLetters) {
@@ -37,6 +38,8 @@ public class Main {
 
     public static HashSet cartGenerator(String knownLetters, char[][] yellowLetters){
         ArrayList<ArrayList<Object>> combos = new ArrayList<>();
+        Set<ArrayList<Object>> combinations = new HashSet<>();
+        HashSet<String> solutionSet = new HashSet<String>();
         for (int i = 0; i < yellowLetters.length; i++) {
             ArrayList<Object> list = new ArrayList<>();
             for (int j = 1; j < yellowLetters[i].length; j++){
@@ -44,8 +47,22 @@ public class Main {
             }
             combos.add(list);
         }
-        HashSet combinations = CartesianProduct.cartesianProduct(combos);
-        return combinations;
+        combinations = CartesianProduct.cartesianProduct(combos);
+        for (ArrayList<Object> positions  : combinations){
+            HashSet<Object> setCon = new HashSet<>(positions);
+            if(setCon.size() == yellowLetters.length){
+                //System.out.println("Carts "+ positions + " Set Conversion = " + setCon + " Count = " + setCon.size());
+
+                StringBuilder string = new StringBuilder(knownLetters);
+                for (int i = 0; i < positions.size(); i++){
+                    string.setCharAt((Integer) positions.get(i) -1, yellowLetters[yellowLetters.length -1 -i][0]);
+                }
+                System.out.println("Possible Solution = " + string);
+                solutionSet.add(string.toString());
+            }
+        }
+
+        return solutionSet;
     }
 
 
@@ -72,8 +89,14 @@ public class Main {
         solution.add("S_RAE");
         solution.add("_SRAE");
 
-        if (solution.equals(generatePossibleWords(knownLetters, yellowLetters))) {
+        if (solution.equals(cartGenerator(knownLetters, yellowLetters))) {
             System.out.println("Test One passed.");
+        } else {
+            System.out.println("Test Failed");
         }
     }
 }
+
+
+//learn loops you silly goose
+//learn Set interface thoroughly (super helpful when deleting duplicate values in a collection)
