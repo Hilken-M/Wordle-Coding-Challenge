@@ -153,8 +153,11 @@ public class Main {
         solution.add("SPREA");
         solution.add("RSPEA");
         solution.add("SRPEA");
-        if (cartGenerator(knownLetters, yellowLetters) == null) System.out.println("Call returns null");
-        if (!solution.equals(cartGenerator(knownLetters, yellowLetters))) System.out.println("Data does not match");
+        if (!solution.equals(cartGenerator(knownLetters, yellowLetters))) {
+            System.out.println("Data does not match");
+        } else {
+            System.out.println("Test Case 2 Passed");
+        }
     }
 }
 
