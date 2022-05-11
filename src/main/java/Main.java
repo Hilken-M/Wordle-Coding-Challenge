@@ -8,7 +8,7 @@ public class Main {
 
     public static void main(String[] args) {
         testCaseOne();
-
+        testCaseTwo();
     }
 
     public static HashSet generatePossibleWords(String knownLetters, char[][] yellowLetters) {
@@ -94,6 +94,67 @@ public class Main {
         } else {
             System.out.println("Test Failed");
         }
+    }
+
+    public static void testCaseTwo() {
+
+        String knownLetters = "_____";
+
+        char[][] yellowLetters = {
+                {'P', '2', '3', '4', '5'},
+                {'E', '1', '3', '4', '5'},
+                {'A', '1', '2', '4', '5'},
+                {'R', '1', '2', '3', '5'},
+                {'S', '1', '2', '3', '4'}
+        };
+
+        Set<String> solution = new HashSet<String>();
+        solution.add("APESR");
+        solution.add("ASEPR");
+        solution.add("ARESP");
+        solution.add("APSER");
+        solution.add("ASPER");
+        solution.add("ARSEP");
+        solution.add("ASREP");
+        solution.add("APRSE");
+        solution.add("ARPSE");
+        solution.add("ARSPE");
+        solution.add("ASRPE");
+        solution.add("EAPSR");
+        solution.add("EASPR");
+        solution.add("EARSP");
+        solution.add("SAEPR");
+        solution.add("RAESP");
+        solution.add("SAPER");
+        solution.add("RASEP");
+        solution.add("SAREP");
+        solution.add("RAPSE");
+        solution.add("RASPE");
+        solution.add("SARPE");
+        solution.add("EPSAR");
+        solution.add("ESPAR");
+        solution.add("ERSAP");
+        solution.add("ESRAP");
+        solution.add("SPEAR");
+        solution.add("RSEAP");
+        solution.add("SREAP");
+        solution.add("RPSAE");
+        solution.add("SPRAE");
+        solution.add("RSPAE");
+        solution.add("SRPAE");
+        solution.add("EPRSA");
+        solution.add("ERPSA");
+        solution.add("ERSPA");
+        solution.add("ESRPA");
+        solution.add("RPESA");
+        solution.add("RSEPA");
+        solution.add("SREPA");
+        solution.add("RPSEA");
+        solution.add("SPREA");
+        solution.add("RSPEA");
+        solution.add("SRPEA");
+        if (cartGenerator(knownLetters, yellowLetters) == null) System.out.println("Call returns null");
+        if (!solution.equals(cartGenerator(knownLetters, yellowLetters))) System.out.println("Data does not match");
     }
 }
 
